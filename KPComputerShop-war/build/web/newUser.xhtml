@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Регистрация</title>
+        <link href="style.css" rel="stylesheet"/>
+    </h:head>
+    <h:body>
+        <f:view>
+            <h:form>
+
+                <h1 align="center"><h:outputLabel value="ComputerShop" /></h1> 
+                <h1 align="center"> <h:outputLabel value="Регистрация"/></h1>
+                <div class="semilayer" align="center">
+                        <table align="center">
+                            <tr>
+                                <th align="left">
+                                    <span style="font-size: 20px; font-family: segoe ui semibold; color:whitesmoke;">
+                                        <h:outputLabel value="Аккаунт" for="userName"/>
+                                    </span>
+                                    <br/>
+                                    <h:inputText class="textbox" id="userName" value="#{userBean.userName}" required="true">  </h:inputText>                                                                   
+                                
+                                    <h:message for="userName" style="color:red" /> 
+                                </th>
+                            </tr>
+
+                            <tr>
+                                <th align="left">
+                                    <span style="font-size: 20px; font-family: segoe ui semibold; color:whitesmoke;">
+                                        <h:outputLabel value="Имя" for="name"/>
+                                    </span>
+                                    <br/>
+                                    <h:inputText class="textbox" id="name" value="#{userBean.name}" required="true">  </h:inputText>                                                                   
+                                
+                                    <h:message for="name" style="color:red" /> 
+                                </th>
+                            </tr>
+
+                            <tr>
+                                <th align="left">
+                                    <span style="font-size: 20px; font-family: segoe ui semibold; color:whitesmoke;">
+                                    <h:outputLabel value="Фамилия" for="surName"/></span>
+                                <br/>
+                                <h:inputText class="textbox" id="surName" value="#{userBean.surName}" required="true">  </h:inputText>                                                                   
+                                
+                                    <h:message for="surName" style="color:red" /> 
+                                </th>
+                            </tr>
+                            <tr>
+                                <th align="left">
+                                    <span style="font-size: 20px; font-family: segoe ui semibold; color:whitesmoke;">
+                                    <h:outputLabel value="Отчество" for="patronymic"/></span>
+                                    <br/>
+                                    <h:inputText class="textbox" id="patronymic" value="#{userBean.patronymic}" required="true">  </h:inputText>                                                                   
+                                
+                                    <h:message for="patronymic" style="color:red" /> 
+                                </th>
+                            </tr> 
+
+                            <tr>
+                               <th align="left">
+                                   <span style="font-size: 20px; font-family: segoe ui semibold; color:whitesmoke;">
+                                    <h:outputLabel value="Пароль" for="password"/></span>
+                                <br/>
+                                    <h:inputSecret class="textbox" id="password" value="#{userBean.password}" required="true">
+
+                                    </h:inputSecret>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th align="left">
+                                    <span style="font-size: 20px; font-family: segoe ui semibold; color:whitesmoke;">
+                                    <h:outputLabel value="Повторите пароль" for="pass2"/></span>
+                                <br/>
+                                    <h:inputSecret class="textbox" id="pass2" value="#{userBean.pass2}" required="false">                             
+                                    </h:inputSecret>                         
+                                
+                                    <h:message for="pass2" style="color:red" /> 
+                                </th>
+                            </tr>
+
+                            <tr>
+                                
+                                <th>
+                                    <h:commandButton class="button" value="Регистрация" action="#{userBean.addNewUser()}"/>
+
+                                </th>
+                            </tr>
+                        </table>
+                </div>
+            </h:form>
+        </f:view>
+    </h:body>
+</html>
+

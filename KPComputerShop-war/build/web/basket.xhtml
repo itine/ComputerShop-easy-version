@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <head>
+        <title>Корзина</title>
+        <link href="style.css" rel="stylesheet"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+
+    <h:body>
+        <script type="text/javascript">
+            function coloreditor(obj, cvet)
+            {
+                obj.style.backgroundColor = cvet
+            }
+        </script>
+        <f:view>
+            <h:form>
+                <table class="shadow" style="border-top-right-radius: 30px" border="0" bgcolor="whitesmoke" align="center" width="1000">
+                    <tr><td>
+                            <table style="border-top-right-radius:  30px" border="0" bgcolor="#2795a8" align="center" width="990">
+                                <tr><td>
+                                        <font face="Comic Sans MS"  color="#2F4F4F" size="4">
+                                            <h1 align="center" class="shadowtext">Корзина</h1>
+                                        </font></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                <table border="0" bgcolor="whitesmoke" align="center" width="1000">
+                    <tr>
+                        <td>
+                            <table class="navig" border="0" bgcolor="#FFFFFF" align="center" width="990">
+                                <tr>
+                                    <td width="170" onmouseover="coloreditor(this, '#AFCDE7')" onmouseout="coloreditor(this, 'whitesmoke')">
+                                        <h:commandLink action="#{basketBean.exit()}" value="Выйти"> </h:commandLink>
+                                    </td>
+                                    <td width="170" onmouseover="coloreditor(this, '#AFCDE7')" onmouseout="coloreditor(this, 'whitesmoke')" align="center">
+                                         <h:commandLink rendered="#{request.isUserInRole('admin')}" action="/adminPanel.xhtml" value="Администрирование"> </h:commandLink>
+                                        <h:commandLink rendered="#{request.isUserInRole('client')}" action="/thanks.xhtml" value="О магазине"> </h:commandLink>
+                                        <h:commandLink rendered="#{request.isUserInRole('orderManager')}" action="/thanks.xhtml" value="О магазине"> </h:commandLink>
+                                         <h:commandLink rendered="#{request.isUserInRole('productManager')}" action="/thanks.xhtml" value="О магазине"> </h:commandLink>
+                                    </td>
+                                    <td width="170" onmouseover="coloreditor(this, '#AFCDE7')" onmouseout="coloreditor(this, 'whitesmoke')" align="center">
+                                        <h:commandLink action="/basket.xhtml" value="Корзина"> </h:commandLink>
+                                    </td>
+                                    <td onmouseover="coloreditor(this, '#AFCDE7')" onmouseout="coloreditor(this, 'whitesmoke')" width="170"  align="center">
+                                        <h:commandLink rendered="#{request.isUserInRole('client')}" action="/clientOrders.xhtml" value="Мои заказы"> </h:commandLink>
+                                        <h:commandLink rendered="#{request.isUserInRole('orderManager')}" action="/allOrders.xhtml" value="Заказы клиентов"> </h:commandLink>
+                                         <h:commandLink rendered="#{request.isUserInRole('productManager')}" action="/addProduct.xhtml" value="Заказать товар"> </h:commandLink>
+                                    </td>
+                                    <td onmouseover="coloreditor(this, '#AFCDE7')" onmouseout="coloreditor(this, 'whitesmoke')" width="170" align="center">
+                                        <h:commandLink action="/products.xhtml" value="Товары"> </h:commandLink>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+
+                <table class="shadow" style=" border-bottom-left-radius: 30px" border="0" bgcolor="whitesmoke" align="center" width="1000">
+                    <tr>
+                        <td>
+                            <table style="border-bottom-left-radius: 30px;" border="0" bgcolor="#2795a8" align="center" width="990">
+                                <tr>
+                                    <td>
+                                        <font size="4" color="black" face="Comic Sans MS">
+
+                                            <h1 align="center">
+                                                <h:outputLabel value=" Пользователь: #{request.remoteUser}"/>
+                                            </h1>
+
+                                            <table class="table_blur table" cellspacing="2" bgcolor="#ADFDAA" align="center" width="80%" border="1">  
+                                                <tr>
+                                                    <th> Название </th> 
+                                                    <th> Количество </th>
+                                                    <th> Цена </th> 
+                                                    <th> Выбор  </th>
+                                                </tr> 
+                                                <c:forEach var="basketItem" items="${basketBean.items}" varStatus="iter">
+
+                                                    <tr>
+                                                        <td>
+                                                            #{basketItem.product.productName} 
+                                                        </td> 
+                                                        <td>
+                                                            #{basketItem.quantity}
+
+                                                        </td> 
+                                                        <td>
+                                                            #{basketItem.total}
+                                                        </td> 
+                                                        <td>
+                                                            <h:commandButton class="btn-6d" value="Удалить из корзины" action="#{basketBean.deleteItem(basketItem.product)}"/>
+                                                        </td>
+                                                    </tr>
+
+                                                </c:forEach>
+                                            </table>
+                                            <h:outputLabel value="Итоговая цена: #{basketBean.subtotal}"/>
+                                            <br/>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;<h:commandButton value="Оформить заказ" action="#{orderBean.orderConfirm(request.remoteUser, basketBean.subtotal)}"/>
+                                            <h:commandButton action="/products.xhtml" value="Выбрать товары"> </h:commandButton>
+
+                                        </font>
+                                    </td>
+                                </tr>
+                               </table>  &nbsp;&nbsp;&nbsp;&nbsp;<a href="#" id="vverh">   В начало страницы</a>
+                            <script  src="my_js.js"></script>
+
+                        </td>
+                    </tr>
+                </table>
+            </h:form>
+        </f:view>
+
+    </h:body>
+</html>
