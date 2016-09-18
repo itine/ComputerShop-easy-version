@@ -7,6 +7,10 @@
             <file>file:/C:/Users/alexe/OneDrive/Documents/NetBeansProjects/KPComputerShop/KPComputerShop-ejb/src/conf/persistence.xml</file>
             <file>file:/C:/Users/alexe/OneDrive/Documents/NetBeansProjects/KPComputerShop/KPComputerShop-ejb/src/java/dao/ProductDAO.java</file>
             <file>file:/C:/Users/alexe/OneDrive/Documents/NetBeansProjects/KPComputerShop/KPComputerShop-ejb/src/java/dao/OrderDAO.java</file>
+            <file>file:/C:/Users/alexe/OneDrive/Documents/NetBeansProjects/KPComputerShop/KPComputerShop-ejb/src/java/dao/OrderDAOLocal.java</file>
+            <file>file:/C:/Users/alexe/OneDrive/Documents/NetBeansProjects/KPComputerShop/KPComputerShop-ejb/src/java/dao/UserDAO.java</file>
+            <file>file:/C:/Users/alexe/OneDrive/Documents/NetBeansProjects/KPComputerShop/KPComputerShop-ejb/src/java/dao/UserDAOLocal.java</file>
+            <file>file:/C:/Users/alexe/OneDrive/Documents/NetBeansProjects/KPComputerShop/KPComputerShop-ejb/src/java/model2/Basket.java</file>
         </group>
     </open-files>
 </project-private>
